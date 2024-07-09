@@ -5,26 +5,28 @@
 :root {
   --color-text: #242730;
   --color-text-light: #959ba5;
+  --color-text-contrast: #e1e1e1;
   --color-background: #ffffff99;
   --color-primary: #7d60c0;
   --color-primary-dark: #412c72;
   --color-gold: #ffb254;
   --color-paper: #ffffff;
   --color-orange: #f96632;
+  --color-sidebar: #36264d;
 }
 
-/* Para implementar os temas futuramente
 html[dark] {
-  --color-text: #242730;
-  --color-text-light: #959ba5;
-  --color-background: #959ba5;
-  --color-primary: #7d60c0;
-  --color-primary-dark: #412c72;
-  --color-gold: #ffb254;
-  --color-paper: #ffffff;
-  --color-orange: #f96632;
+  --color-text: #e1e1e1;
+  --color-text-light: #b0b3bb;
+  --color-text-contrast: #242730;
+  --color-background: #181a1f;
+  --color-primary: #5d4296;
+  --color-primary-dark: #a78bfa;
+  --color-gold: #ffc874;
+  --color-paper: #2b2b2b;
+  --color-orange: #ff6e4a;
+  --color-sidebar: #201b2c;
 }
-*/
 
 html,
 body {
