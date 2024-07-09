@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-text: #242730;
+  --color-text-light: #959ba5;
+  --color-background: #ffffff99;
+  --color-primary: #7d60c0;
+  --color-primary-dark: #412c72;
+  --color-gold: #ffb254;
+  --color-paper: #ffffff;
+  --color-orange: #f96632;
+}
+
+/* Para implementar os temas futuramente
+html[dark] {
+  --color-text: #242730;
+  --color-text-light: #959ba5;
+  --color-background: #959ba5;
+  --color-primary: #7d60c0;
+  --color-primary-dark: #412c72;
+  --color-gold: #ffb254;
+  --color-paper: #ffffff;
+  --color-orange: #f96632;
+}
+*/
+
+html,
+body {
+  @apply bg-background text-text w-screen h-screen;
+}
