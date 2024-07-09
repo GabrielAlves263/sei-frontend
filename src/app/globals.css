@@ -32,3 +32,7 @@ html,
 body {
   @apply bg-background text-text w-screen h-screen;
 }
+
+a {
+  @apply active:opacity-50 transition-opacity;
+}
