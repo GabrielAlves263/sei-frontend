@@ -1,4 +1,5 @@
 "use client";
+import { Disclosure, DisclosureButton } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,59 +14,42 @@ export function SideMenu() {
   const currentPath = usePathname();
 
   return (
-    <>
-      <button
-        data-drawer-target="sidebar"
-        data-drawer-toggle="sidebar"
-        aria-controls="sidebar"
-        type="button"
-        className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-text rounded-lg sm:hidden hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-      >
-        <span className="sr-only">Open sidebar</span>
-        <HiMenuAlt2 className="w-6 h-6" />
-      </button>
+    <Disclosure>
+      <DisclosureButton className="absolute top-4 left-4 inline-flex items-center peer justify-center rounded-lg p-2 mt-2 ms-3 text-sm text-text hover:text-primary hover:bg-primary-dark md:hidden focus:outline-none focus:ring-2 focus:ring-primary group">
+        <HiMenuAlt2 className="block w-6 h-6" aria-hidden="true" />
+      </DisclosureButton>
 
-      <aside
-        id="sidebar"
-        className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
-        aria-label="Sidebar"
-      >
-        <nav className="h-full flex flex-col px-3 py-4 overflow-y-auto bg-sidebar rounded-r-3xl">
-          <Link href="/" className="flex justify-center mb-5">
-            <Image src="/logo.svg" width={100} height={100} alt="Logo" />
-          </Link>
-
-          <ul className="flex-1 space-y-2 font-medium text-text-light text-sm">
-            <MenuItem
-              text="Dashboard"
-              path="/"
-              currentPath={currentPath}
-              icon={TbHomeFilled}
-            />
-
-            <MenuItem
-              text="Explore"
-              path="/explore"
-              currentPath={currentPath}
-              icon={RiCompassFill}
-            />
-
-            <MenuItem
-              text="Notas"
-              path="/notas"
-              currentPath={currentPath}
-              icon={BiSolidBook}
-            />
-
-            <MenuItem
-              text="Calendário"
-              path="/calendario"
-              currentPath={currentPath}
-              icon={FaCalendarAlt}
-            />
-          </ul>
-        </nav>
-      </aside>
-    </>
+      <nav className="px-3 py-4 w-1/2 h-screen bg-sidebar z-20 fixed top-0 -left-96 md:w-60 md:left-0 peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
+        <Link href="/" className="flex justify-center mb-5">
+          <Image src="/logo.svg" width={100} height={100} alt="Logo" />
+        </Link>
+        <ul className="flex-1 space-y-2 font-medium text-text-light text-sm">
+          <MenuItem
+            text="Dashboard"
+            path="/"
+            currentPath={currentPath}
+            icon={TbHomeFilled}
+          />
+          <MenuItem
+            text="Explore"
+            path="/explore"
+            currentPath={currentPath}
+            icon={RiCompassFill}
+          />
+          <MenuItem
+            text="Notas"
+            path="/notas"
+            currentPath={currentPath}
+            icon={BiSolidBook}
+          />
+          <MenuItem
+            text="Calendário"
+            path="/calendario"
+            currentPath={currentPath}
+            icon={FaCalendarAlt}
+          />
+        </ul>
+      </nav>
+    </Disclosure>
   );
 }
