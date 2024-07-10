@@ -19,7 +19,7 @@ export function MenuItem({
       <Link
         href={path}
         data-active={currentPath === path}
-        className="flex items-center ps-16 p-2 rounded-lg hover:text-text gap-x-2 transition duration-75 data-[active=true]:text-text data-[active=true]:bg-background"
+        className="flex items-center md:ps-16 p-2 rounded-lg hover:text-text gap-x-2 transition duration-75 data-[active=true]:text-text data-[active=true]:bg-background"
       >
         <Icon className="w-5 h-5 " />
         <span>{text}</span>
