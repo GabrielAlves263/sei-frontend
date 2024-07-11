@@ -17,16 +17,26 @@ export function MenuItem({
   expanded,
 }: IMenuItemProps) {
   return (
-    <li>
+    <li className="group flex items-center">
       <Link
         href={path}
         data-active={currentPath === path}
-        className={`relative flex items-center overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-150 duration-150 data-[active=true]:text-text data-[active=true]:bg-background
+        className={`relative flex items-center w-full overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-150 duration-150 data-[active=true]:text-text data-[active=true]:bg-background
           ${expanded ? "md:ps-16" : ""}`}
       >
         <Icon className="w-6 h-6" />
         <span className={expanded ? "md:block" : "md:hidden"}>{text}</span>
       </Link>
+
+      {!expanded && (
+        <span
+          className="absolute left-full rounded-md px-2 py-1 ml-6 bg-sidebar
+        text-sm text-text-contrast opacity-20 -translate-x-3 transition-all invisible
+        md:group-hover:visible group-hover:opacity-100 group-hover:translate-x-0"
+        >
+          {text}
+        </span>
+      )}
     </li>
   );
 }
