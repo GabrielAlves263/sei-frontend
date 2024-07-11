@@ -22,7 +22,7 @@ export function MenuItem({
         href={path}
         data-active={currentPath === path}
         className={`relative flex items-center w-full overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-150 duration-150 data-[active=true]:text-text data-[active=true]:bg-background
-          ${expanded ? "md:ps-16" : ""}`}
+          ${expanded ? "md:ps-12" : ""}`}
       >
         <Icon className="w-6 h-6" />
         <span className={expanded ? "md:block" : "md:hidden"}>{text}</span>

@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { BiSolidBook } from "react-icons/bi";
+import { BiSolidBook, BiSolidExit } from "react-icons/bi";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaAngleLeft } from "react-icons/fa6";
 import { HiMenuAlt2 } from "react-icons/hi";
+import { MdSettings } from "react-icons/md";
 import { RiCompassFill } from "react-icons/ri";
 import { TbHomeFilled } from "react-icons/tb";
 import { MenuItem } from "./MenuItem";
@@ -21,19 +22,19 @@ export function SideMenu() {
   };
 
   return (
-    <Disclosure>
+    <Disclosure as="aside">
       <DisclosureButton className="absolute top-4 left-4 inline-flex items-center peer justify-center rounded-lg p-2 mt-2 ms-3 text-sm text-text hover:text-primary hover:bg-primary-dark md:hidden focus:outline-none focus:ring-2 focus:ring-primary group">
         <HiMenuAlt2 className="block w-6 h-6" aria-hidden="true" />
       </DisclosureButton>
 
       <nav
-        className={`px-3 py-4 w-1/2 h-screen bg-sidebar rounded-r-xl z-20 fixed top-0 -left-96 md:left-0 peer-focus:left-0 peer:transition ease-out delay-150 duration-200
-        ${expanded ? "md:w-64" : "md:w-16"}`}
+        className={`flex flex-col px-3 py-4 w-1/2 h-screen bg-sidebar rounded-r-xl z-20 fixed top-0 -left-96 md:left-0 peer-focus:left-0 peer:transition ease-out delay-150 duration-200
+        ${expanded ? "md:w-60" : "md:w-16"}`}
       >
         <button
           onClick={toggleExpanded}
           className={`hidden w-5 h-5 md:flex items-center p-1 relative top-2  text-paper bg-primary rounded-3xl transition-all delay-150 duration-150 ease
-            ${expanded ? "left-[14.5rem]" : "left-10"}`}
+            ${expanded ? "left-[13.5rem]" : "left-10"}`}
         >
           <FaAngleLeft className={expanded ? "rotate-0" : "rotate-180"} />
         </button>
@@ -44,11 +45,11 @@ export function SideMenu() {
             width={32}
             height={32}
             alt="Logo"
-            className={`transition-all ${expanded ? "md:w-32" : "md:w-8"}`}
+            className={`transition-all ${expanded ? "md:w-24" : "md:w-8"}`}
           />
         </Link>
 
-        <ul className="flex-1 space-y-2 font-medium text-text-light text-sm">
+        <ul className="flex-1 space-y-4 font-medium text-text-light text-sm">
           <MenuItem
             text="Dashboard"
             path="/"
@@ -75,6 +76,27 @@ export function SideMenu() {
             path="/calendario"
             currentPath={currentPath}
             icon={FaCalendarAlt}
+            expanded={expanded}
+          />
+
+          <hr
+            className={` mx-auto h-[1px] bg-text-light border-none rounded-sm
+            ${expanded ? "w-2/3" : "w-full"}`}
+          />
+
+          <MenuItem
+            text="Configurações"
+            path="/settings"
+            currentPath={currentPath}
+            icon={MdSettings}
+            expanded={expanded}
+          />
+
+          <MenuItem
+            text="Sair"
+            path="/quit"
+            currentPath={currentPath}
+            icon={BiSolidExit}
             expanded={expanded}
           />
         </ul>
