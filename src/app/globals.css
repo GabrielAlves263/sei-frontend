@@ -6,7 +6,7 @@
   --color-text: #242730;
   --color-text-light: #959ba5;
   --color-text-contrast: #e1e1e1;
-  --color-background: #ffffff99;
+  --color-background: #d3d3d3;
   --color-primary: #7d60c0;
   --color-primary-dark: #412c72;
   --color-gold: #ffb254;
@@ -35,4 +35,14 @@ body {
 
 a {
   @apply active:opacity-50 transition-opacity;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.rotate-0 {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
 }

@@ -3,8 +3,10 @@ import { Disclosure, DisclosureButton } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { BiSolidBook } from "react-icons/bi";
 import { FaCalendarAlt } from "react-icons/fa";
+import { FaAngleLeft } from "react-icons/fa6";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { RiCompassFill } from "react-icons/ri";
 import { TbHomeFilled } from "react-icons/tb";
@@ -12,6 +14,11 @@ import { MenuItem } from "./MenuItem";
 
 export function SideMenu() {
   const currentPath = usePathname();
+  const [expanded, setExpanded] = useState(true);
+
+  const toggleExpanded = () => {
+    setExpanded((curr) => !curr);
+  };
 
   return (
     <Disclosure>
@@ -19,34 +26,56 @@ export function SideMenu() {
         <HiMenuAlt2 className="block w-6 h-6" aria-hidden="true" />
       </DisclosureButton>
 
-      <nav className="px-3 py-4 w-1/2 h-screen bg-sidebar z-20 fixed top-0 -left-96 md:w-60 md:left-0 peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
+      <nav
+        className={`px-3 py-4 w-1/2 h-screen bg-sidebar rounded-r-xl z-20 fixed top-0 -left-96 md:left-0 peer-focus:left-0 peer:transition ease-out delay-150 duration-200
+        ${expanded ? "md:w-64" : "md:w-16"}`}
+      >
+        <button
+          onClick={toggleExpanded}
+          className={`hidden w-5 h-5 md:flex items-center p-1 relative top-2  text-paper bg-primary rounded-3xl transition-all delay-150 duration-150 ease
+            ${expanded ? "left-[14.5rem]" : "left-10"}`}
+        >
+          <FaAngleLeft className={expanded ? "rotate-0" : "rotate-180"} />
+        </button>
+
         <Link href="/" className="flex justify-center mb-5">
-          <Image src="/logo.svg" width={100} height={100} alt="Logo" />
+          <Image
+            src="/logo.svg"
+            width={32}
+            height={32}
+            alt="Logo"
+            className={`transition-all ${expanded ? "md:w-32" : "md:w-8"}`}
+          />
         </Link>
+
         <ul className="flex-1 space-y-2 font-medium text-text-light text-sm">
           <MenuItem
             text="Dashboard"
             path="/"
             currentPath={currentPath}
             icon={TbHomeFilled}
+            expanded={expanded}
           />
           <MenuItem
             text="Explore"
             path="/explore"
             currentPath={currentPath}
             icon={RiCompassFill}
+            expanded={expanded}
           />
           <MenuItem
             text="Notas"
             path="/notas"
             currentPath={currentPath}
             icon={BiSolidBook}
+            expanded={expanded}
           />
           <MenuItem
             text="Calendário"
             path="/calendario"
             currentPath={currentPath}
             icon={FaCalendarAlt}
+            expanded={expanded}
           />
         </ul>
       </nav>

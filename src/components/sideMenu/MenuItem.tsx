@@ -6,6 +6,7 @@ interface IMenuItemProps {
   path: string;
   currentPath: string;
   icon: IconType;
+  expanded: boolean;
 }
 
 export function MenuItem({
@@ -13,16 +14,18 @@ export function MenuItem({
   path,
   currentPath,
   icon: Icon,
+  expanded,
 }: IMenuItemProps) {
   return (
     <li>
       <Link
         href={path}
         data-active={currentPath === path}
-        className="flex items-center md:ps-16 p-2 rounded-lg hover:text-text gap-x-2 transition duration-75 data-[active=true]:text-text data-[active=true]:bg-background"
+        className={`relative flex items-center overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-150 duration-150 data-[active=true]:text-text data-[active=true]:bg-background
+          ${expanded ? "md:ps-16" : ""}`}
       >
-        <Icon className="w-5 h-5 " />
-        <span>{text}</span>
+        <Icon className="w-6 h-6" />
+        <span className={expanded ? "md:block" : "md:hidden"}>{text}</span>
       </Link>
     </li>
   );
