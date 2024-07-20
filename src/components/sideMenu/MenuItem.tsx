@@ -21,7 +21,7 @@ export function MenuItem({
       <Link
         href={path}
         data-active={currentPath === path}
-        className={`relative flex items-center w-full overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-150 duration-150
+        className={`relative flex items-center w-full overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-75 duration-150
           data-[active=true]:text-text data-[active=true]:bg-background
           ${expanded ? "md:ps-12" : ""}`}
       >
