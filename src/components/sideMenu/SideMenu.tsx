@@ -3,7 +3,6 @@ import { Disclosure, DisclosureButton } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import { BiSolidBook, BiSolidExit } from "react-icons/bi";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -13,13 +12,13 @@ import { RiCompassFill } from "react-icons/ri";
 import { TbHomeFilled } from "react-icons/tb";
 import { MenuItem } from "./MenuItem";
 
-export function SideMenu() {
-  const currentPath = usePathname();
-  const [expanded, setExpanded] = useState(true);
+interface ISideMenuProps {
+  expanded: boolean;
+  toggleExpanded: () => void;
+}
 
-  const toggleExpanded = () => {
-    setExpanded((curr) => !curr);
-  };
+export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
+  const currentPath = usePathname();
 
   return (
     <Disclosure as="aside">

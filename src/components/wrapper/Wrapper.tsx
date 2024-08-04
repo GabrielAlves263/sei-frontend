@@ -1,0 +1,27 @@
+"use client";
+import React, { useState } from "react";
+import { SideMenu } from "../sideMenu/SideMenu";
+
+interface IWrapperProps {
+  children: React.ReactNode;
+}
+
+export function Wrapper({ children }: IWrapperProps) {
+  const [expanded, setExpanded] = useState(true);
+
+  const toggleExpanded = () => {
+    setExpanded((curr) => !curr);
+  };
+
+  return (
+    <div className="flex">
+      <SideMenu expanded={expanded} toggleExpanded={toggleExpanded} />
+      <main
+        className={`flex flex-1 flex-col flex-wrap justify-center mr-4 p-6 transition-all duration-200 delay-150 gap-y-6
+        ${expanded ? "md:ml-60" : "md:ml-16"}`}
+      >
+        {children}
+      </main>
+    </div>
+  );
+}

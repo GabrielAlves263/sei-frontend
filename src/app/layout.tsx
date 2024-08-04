@@ -1,4 +1,4 @@
-import { SideMenu } from "@/components/sideMenu/SideMenu";
+import { Wrapper } from "@/components/wrapper/Wrapper";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -18,9 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-Br">
-      <body className={poppins.className}>
-        <SideMenu />
-        {children}
+      <body className={`${poppins.className} overflow-x-hidden`}>
+        <Wrapper>{children}</Wrapper>
       </body>
     </html>
   );
