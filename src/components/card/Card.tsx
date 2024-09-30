@@ -19,7 +19,7 @@ export function Card({ text }: ICardProps) {
   };
 
   return (
-    <article className="bg-primary w-72 h-52 rounded-3xl gap-x-16 gap-y-4">
+    <article className="bg-primary w-[17rem] h-52 rounded-3xl gap-x-16 gap-y-4">
       <div className="flex justify-between items-center px-4">
         <Image src={"/book.png"} alt={"Disciplina"} width={132} height={132} />
         <ButtonRound
