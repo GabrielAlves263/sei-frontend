@@ -16,7 +16,7 @@ export function ButtonRound({
   return (
     <button
       onClick={action}
-      className={`w-11 h-11 rounded-full flex items-center justify-center transition-colors ${bgColor}`}
+      className={`w-11 h-11 rounded-full flex items-center hover:contrast-50 justify-center transition-colors ${bgColor}`}
     >
       <Icon className={`w-6 h-6 ${color}`} />
     </button>

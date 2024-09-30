@@ -15,7 +15,7 @@
   --color-sidebar: #36264d;
 }
 
-html[dark] {
+.dark {
   --color-text: #e1e1e1;
   --color-text-light: #b0b3bb;
   --color-text-contrast: #242730;
