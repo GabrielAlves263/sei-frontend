@@ -1,4 +1,5 @@
 import { Card } from "@/components/card/Card";
+import Header from "@/components/header/Header";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <div className="flex justify-center bg-paper ">Header</div>
+      <Header />
       <h1 className="font-bold">Adicione disciplinas na aba Explore</h1>
 
       <div className="flex flex-col w-full bg-paper rounded-xl pb-16">

@@ -23,14 +23,14 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
   return (
     <Disclosure as="aside">
       <DisclosureButton
-        className="absolute top-4 left-4 inline-flex peer items-center justify-center rounded-lg p-2 mt-2 ms-3 text-sm text-text hover:text-primary hover:bg-primary-dark md:hidden focus:outline-none focus:ring-2 focus:ring-primary"
+        className="absolute top-4 left-2 inline-flex peer items-center justify-center rounded-lg p-2 mt-2 ms-3 text-sm text-text hover:text-primary hover:bg-primary-dark md:hidden focus:outline-none focus:ring-2 focus:ring-primary"
         aria-label="Toggle Menu"
       >
         <HiMenuAlt2 className="block w-6 h-6" aria-hidden="true" />
       </DisclosureButton>
 
       <nav
-        className={`flex flex-col px-3 py-4 h-screen bg-sidebar rounded-r-xl z-20 fixed top-0 -left-96 md:left-0 peer-focus:left-0 delay-150 transition-all duration-200
+        className={`flex flex-col px-3 py-4 h-screen w-60 bg-sidebar rounded-r-xl z-20 fixed top-0 -left-96 md:left-0 peer-focus:left-0 delay-150 transition-all duration-200
         ${expanded ? "md:w-60" : "md:w-16"}`}
       >
         <button
