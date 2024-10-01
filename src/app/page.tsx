@@ -1,4 +1,5 @@
 import { Card } from "@/components/card/Card";
+import Container from "@/components/container/Container";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,21 +8,15 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <h1 className="font-bold">Adicione disciplinas na aba Explore</h1>
-
-      <div className="flex flex-col w-full bg-paper rounded-xl pb-16">
-        <h1 className="flex px-[4.5rem] py-3 font-bold h-16 items-center">
-          Minhas disciplinas
-        </h1>
-        <div className="flex flex-wrap gap-7 px-[4.5rem]">
-          <Card text="Disciplina"></Card>
-          <Card text="Disciplina"></Card>
-          <Card text="Disciplina"></Card>
-          <Card text="Disciplina"></Card>
-          <Card text="Disciplina"></Card>
-        </div>
-      </div>
-    </>
+    <Container
+      title="Minhas Disciplinas"
+      className="grid grid-cols-[repeat(auto-fill,17rem)] justify-center gap-7"
+    >
+      <Card text="Disciplina" path="/disciplina"></Card>
+      <Card text="Disciplina" path="/disciplina"></Card>
+      <Card text="Disciplina" path="/disciplina"></Card>
+      <Card text="Disciplina" path="/disciplina"></Card>
+      <Card text="Disciplina" path="/disciplina"></Card>
+    </Container>
   );
 }

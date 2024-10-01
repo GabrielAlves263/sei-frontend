@@ -32,7 +32,7 @@ export function MenuItem({
       {!expanded && (
         <span
           className="absolute left-full rounded-md px-2 py-1 ml-6 bg-sidebar
-        text-sm text-text-contrast opacity-20 -translate-x-3 transition-all invisible
+        text-sm text-text-contrast dark:text-text opacity-20 -translate-x-3 transition-all invisible
         md:group-hover:visible group-hover:opacity-100 group-hover:translate-x-0"
         >
           {text}

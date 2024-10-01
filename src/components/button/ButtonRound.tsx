@@ -1,8 +1,9 @@
+import { type MouseEvent } from "react";
 import { IconType } from "react-icons";
 
 interface IButtonRoundProps {
   icon: IconType;
-  action: () => void;
+  action: (e: MouseEvent) => void;
   bgColor?: string;
   color?: string;
 }
