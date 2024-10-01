@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-Br">
-      <body className={`${poppins.className} overflow-x-hidden`}>
+      <body
+        className={`${poppins.className} overflow-x-hidden transition-colors`}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Wrapper>{children}</Wrapper>
         </ThemeProvider>
