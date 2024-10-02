@@ -12,7 +12,7 @@ export default function Home() {
       title="Minhas Disciplinas"
       className="grid grid-cols-[repeat(auto-fill,17rem)] justify-center gap-7"
     >
-      <Card text="Disciplina" path="/disciplina"></Card>
+      <Card text="Disciplina" path="/disciplina/teste"></Card>
       <Card text="Disciplina" path="/disciplina"></Card>
       <Card text="Disciplina" path="/disciplina"></Card>
       <Card text="Disciplina" path="/disciplina"></Card>
