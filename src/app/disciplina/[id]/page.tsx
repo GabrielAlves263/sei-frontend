@@ -1,4 +1,5 @@
 import Container from "@/components/container/Container";
+import Navigator from "@/components/navigator/Navigator";
 import { Metadata } from "next";
 
 interface Props {
@@ -12,5 +13,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function PageSubject({ params }: Props) {
-  return <Container title={params.id}></Container>;
+  const paths = [`/disciplina/${params.id}`];
+
+  return (
+    <>
+      <Navigator paths={paths} />
+      <Container title={params.id}></Container>
+    </>
+  );
 }
