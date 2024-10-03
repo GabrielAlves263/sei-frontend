@@ -2,23 +2,68 @@ import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
 import { Metadata } from "next";
 
+interface ISubject {
+  id: number;
+  name: string;
+  favorited: boolean;
+}
+
 interface Props {
   params: { id: string };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const res = await fetch(`http://localhost:5000/subjects/?id=${params.id}`);
+
+  if (!res.ok) {
+    return {
+      title: "Disciplina não encontrada",
+    };
+  }
+
+  const data: ISubject[] = await res.json();
+
+  if (data.length === 0) {
+    return {
+      title: "Disciplina não encontrada",
+    };
+  }
+
   return {
-    title: params.id,
+    title: data[0].name,
   };
 }
 
-export default function PageSubject({ params }: Props) {
+async function getData(id: string) {
+  const res = await fetch(`http://localhost:5000/subjects/?id=${id}`);
+
+  if (!res.ok) {
+    return {
+      name: "Erro: Disciplina não encontrada",
+    };
+  }
+
+  const data: ISubject[] = await res.json();
+
+  if (data.length === 0) {
+    return {
+      name: "Erro: Disciplina não encontrada",
+    };
+  }
+
+  return {
+    name: data[0].name,
+  };
+}
+
+export default async function PageSubject({ params }: Props) {
   const paths = [`/disciplina/${params.id}`];
+  const subject = await getData(params.id);
 
   return (
     <>
       <Navigator paths={paths} />
-      <Container title={params.id}></Container>
+      <Container title={subject.name}></Container>
     </>
   );
 }
