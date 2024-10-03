@@ -8,10 +8,15 @@ import { ButtonRound } from "../button/ButtonRound";
 interface ICardProps {
   text: string;
   path: string;
+  favorited?: boolean;
 }
 
-export function Card({ text, path }: ICardProps) {
-  const [favorited, setFavorited] = useState(false);
+export function Card({
+  text,
+  path,
+  favorited: isFavorited = false,
+}: ICardProps) {
+  const [favorited, setFavorited] = useState(isFavorited);
 
   const defaultColor = "text-white opacity-80";
   const alternatedColor = "text-gold";

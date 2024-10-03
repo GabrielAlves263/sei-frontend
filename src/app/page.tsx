@@ -1,22 +1,28 @@
-import { Card } from "@/components/card/Card";
+import CardList from "@/components/card/CardList";
 import Container from "@/components/container/Container";
 import { Metadata } from "next";
+
+interface ISubject {
+  id: number;
+  name: string;
+  favorited: boolean;
+}
 
 export const metadata: Metadata = {
   title: "SEI - Página Inicial",
 };
 
-export default function Home() {
+export default async function Home() {
+  const data = await fetch("http://localhost:5000/subjects");
+
+  const subjects = await data.json();
+
   return (
     <Container
       title="Minhas Disciplinas"
       className="grid grid-cols-[repeat(auto-fill,17rem)] justify-center gap-7"
     >
-      <Card text="Disciplina" path="/disciplina/disciplina"></Card>
-      <Card text="Disciplina" path="/disciplina"></Card>
-      <Card text="Disciplina" path="/disciplina"></Card>
-      <Card text="Disciplina" path="/disciplina"></Card>
-      <Card text="Disciplina" path="/disciplina"></Card>
+      <CardList onlyFavoriteds />
     </Container>
   );
 }
