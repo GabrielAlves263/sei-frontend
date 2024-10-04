@@ -1,4 +1,4 @@
-import HorizontalCard from "@/components/card/HorizontalCard";
+import HorizontalCardList from "@/components/card/HorizontalCardList";
 import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
 import { Subject } from "@/types/subject";
@@ -60,13 +60,7 @@ export default async function PageSubject({ params }: Props) {
     <>
       <Navigator paths={paths} />
       <Container title={subject.name} className="mx-10 flex flex-col gap-y-3">
-        <HorizontalCard text="Funções" />
-        <HorizontalCard text="Limites" />
-        <HorizontalCard text="Derivadas" />
-        <HorizontalCard text="Regras de Derivação" />
-        <HorizontalCard text="Máximos e Mínimos" />
-        <HorizontalCard text="Regra de L'Hopital" />
-        <HorizontalCard text="Integrais" />
+        <HorizontalCardList id={params.id} />
       </Container>
     </>
   );

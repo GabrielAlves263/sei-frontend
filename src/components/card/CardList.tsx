@@ -1,7 +1,7 @@
 import { Subject } from "@/types/subject";
 import { Card } from "./Card";
 
-interface ICardListProps {
+interface CardListProps {
   onlyFavoriteds?: boolean;
 }
 
@@ -21,7 +21,7 @@ async function getSubjects(onlyFavoriteds: boolean) {
 
 export default async function CardList({
   onlyFavoriteds = false,
-}: ICardListProps) {
+}: CardListProps) {
   const subjects = await getSubjects(onlyFavoriteds);
 
   return (
