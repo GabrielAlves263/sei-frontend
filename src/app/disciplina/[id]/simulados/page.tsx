@@ -1,4 +1,3 @@
-import HorizontalCardList from "@/components/card/HorizontalCardList";
 import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
 import OptionsBar from "@/components/optionsMenu/OptionsMenu";
@@ -53,7 +52,7 @@ async function getData(id: string) {
   };
 }
 
-export default async function PageSubject({ params }: Props) {
+export default async function PageSimulados({ params }: Props) {
   const paths = [`/disciplina/${params.id}`];
   const subject = await getData(params.id);
 
@@ -61,9 +60,10 @@ export default async function PageSubject({ params }: Props) {
     <>
       <Navigator paths={paths} />
       <OptionsBar id={params.id} />
-      <Container title={subject.name} className="mx-10 flex flex-col gap-y-3">
-        <HorizontalCardList id={params.id} />
-      </Container>
+      <Container
+        title={`Simulados de ${subject.name}`}
+        className="mx-10 flex flex-col gap-y-3"
+      ></Container>
     </>
   );
 }
