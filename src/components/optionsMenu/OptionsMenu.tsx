@@ -6,9 +6,10 @@ import Option from "./Option";
 
 interface OptionBarProps {
   id: string;
+  semester?: string;
 }
 
-export default function OptionsBar({ id }: OptionBarProps) {
+export default function OptionsBar({ id, semester }: OptionBarProps) {
   const currentPath = usePathname();
 
   return (
@@ -21,7 +22,11 @@ export default function OptionsBar({ id }: OptionBarProps) {
         />
         <Option
           icon={GoChecklist}
-          path={`/disciplina/${id}/simulados`}
+          path={
+            semester
+              ? `/disciplina/${id}/simulados/${semester}`
+              : `/disciplina/${id}/simulados`
+          }
           currentPath={currentPath}
         />
       </ul>

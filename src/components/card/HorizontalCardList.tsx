@@ -21,7 +21,6 @@ export default async function HorizontalCardList({
   id,
 }: HorizontalCardListProps) {
   const topics = await getData(id);
-  console.log(topics);
 
   return (
     <>

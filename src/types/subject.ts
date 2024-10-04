@@ -6,6 +6,7 @@ export interface Topic {
 export interface Ap {
   id: string;
   name: string;
+  url: string;
 }
 
 export interface Test {

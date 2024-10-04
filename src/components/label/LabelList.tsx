@@ -3,9 +3,10 @@ import Label from "./Label";
 
 interface LabelListProps {
   id: string;
+  semester?: string;
 }
 
-async function getData(id: string) {
+async function getData(id: string, semester: string | undefined) {
   const res = await fetch(`http://localhost:5000/subjects/?id=${id}`, {
     next: {
       revalidate: 0,
@@ -14,21 +15,31 @@ async function getData(id: string) {
 
   const data: Subject[] = await res.json();
 
-  return data[0].tests;
+  return semester === undefined
+    ? data[0].tests
+    : data[0].tests.filter((test) => test.semester === semester);
 }
 
-export default async function LabelList({ id }: LabelListProps) {
-  const tests = await getData(id);
+export default async function LabelList({ id, semester }: LabelListProps) {
+  const tests = await getData(id, semester);
+  console.log(tests);
 
   return (
     <>
-      {tests.map((test) => (
-        <Label
-          key={test.id}
-          text={test.semester}
-          path={`/disciplina/1/simulados/${test.id}`}
-        />
-      ))}
+      {semester === undefined
+        ? tests.map((test) => (
+            <Label
+              key={test.id}
+              text={test.semester}
+              path={`/disciplina/1/simulados/${test.semester.replace(
+                ".",
+                "_"
+              )}`}
+            />
+          ))
+        : tests[0].aps.map((ap) => (
+            <Label key={ap.id} text={ap.name} path={ap.url} />
+          ))}
     </>
   );
 }
