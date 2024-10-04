@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { TbHomeFilled } from "react-icons/tb";
 
-interface INavigatorProps {
+interface NavigatorProps {
   paths: Array<string>;
 }
 
-export default function Navigator({ paths }: INavigatorProps) {
+export default function Navigator({ paths }: NavigatorProps) {
   return (
     <nav className="flex items-center w-full h-12">
       <Link href="/">

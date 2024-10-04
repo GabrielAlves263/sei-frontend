@@ -1,13 +1,8 @@
 import HorizontalCard from "@/components/card/HorizontalCard";
 import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
+import { Subject } from "@/types/subject";
 import { Metadata } from "next";
-
-interface ISubject {
-  id: number;
-  name: string;
-  favorited: boolean;
-}
 
 interface Props {
   params: { id: string };
@@ -22,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const data: ISubject[] = await res.json();
+  const data: Subject[] = await res.json();
 
   if (data.length === 0) {
     return {
@@ -44,7 +39,7 @@ async function getData(id: string) {
     };
   }
 
-  const data: ISubject[] = await res.json();
+  const data: Subject[] = await res.json();
 
   if (data.length === 0) {
     return {

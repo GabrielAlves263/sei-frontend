@@ -2,12 +2,6 @@ import CardList from "@/components/card/CardList";
 import Container from "@/components/container/Container";
 import { Metadata } from "next";
 
-interface ISubject {
-  id: number;
-  name: string;
-  favorited: boolean;
-}
-
 export const metadata: Metadata = {
   title: "SEI - Página Inicial",
 };

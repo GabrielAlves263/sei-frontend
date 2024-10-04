@@ -1,10 +1,5 @@
+import { Subject } from "@/types/subject";
 import { Card } from "./Card";
-
-interface ISubject {
-  id: number;
-  name: string;
-  favorited: boolean;
-}
 
 interface ICardListProps {
   onlyFavoriteds?: boolean;
@@ -31,7 +26,7 @@ export default async function CardList({
 
   return (
     <>
-      {subjects.map((subject: ISubject) => (
+      {subjects.map((subject: Subject) => (
         <Card
           key={subject.id}
           text={subject.name}
