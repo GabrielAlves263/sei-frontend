@@ -1,4 +1,5 @@
 import Container from "@/components/container/Container";
+import LabelList from "@/components/label/LabelList";
 import Navigator from "@/components/navigator/Navigator";
 import OptionsBar from "@/components/optionsMenu/OptionsMenu";
 import { Subject } from "@/types/subject";
@@ -62,8 +63,10 @@ export default async function PageSimulados({ params }: Props) {
       <OptionsBar id={params.id} />
       <Container
         title={`Simulados de ${subject.name}`}
-        className="mx-10 flex flex-col gap-y-3"
-      ></Container>
+        className="grid grid-cols-[repeat(auto-fill,17rem)] justify-center gap-7"
+      >
+        <LabelList id={params.id} />
+      </Container>
     </>
   );
 }
