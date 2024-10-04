@@ -23,7 +23,11 @@ export default async function LabelList({ id }: LabelListProps) {
   return (
     <>
       {tests.map((test) => (
-        <Label key={test.id} text={test.semester} />
+        <Label
+          key={test.id}
+          text={test.semester}
+          path={`/disciplina/1/simulados/${test.id}`}
+        />
       ))}
     </>
   );

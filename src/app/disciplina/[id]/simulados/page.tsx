@@ -62,7 +62,7 @@ export default async function PageSimulados({ params }: Props) {
       <Navigator paths={paths} />
       <OptionsBar id={params.id} />
       <Container
-        title={`Simulados de ${subject.name}`}
+        title={`Avaliações de ${subject.name}`}
         className="grid grid-cols-[repeat(auto-fill,17rem)] justify-center gap-7"
       >
         <LabelList id={params.id} />
