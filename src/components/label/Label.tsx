@@ -8,7 +8,7 @@ interface LabelProps {
 
 export default function Label({ text, path, isAP = false }: LabelProps) {
   return isAP ? (
-    <Link href={path} legacyBehavior>
+    <Link href={path || ""} legacyBehavior>
       <a
         className="w-full h-full flex items-center justify-center"
         target="_blank"

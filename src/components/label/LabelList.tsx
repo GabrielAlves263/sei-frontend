@@ -38,7 +38,7 @@ export default async function LabelList({ id, semester }: LabelListProps) {
             />
           ))
         : tests[0].aps.map((ap) => (
-            <Label key={ap.id} text={ap.name} path={ap.url} />
+            <Label key={ap.id} text={ap.name} path={ap.url} isAP />
           ))}
     </>
   );
