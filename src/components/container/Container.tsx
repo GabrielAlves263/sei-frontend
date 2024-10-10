@@ -13,7 +13,9 @@ export default function Container({
 }: IContainerProps) {
   return (
     <Tag className={`flex flex-col w-full bg-paper rounded-xl pb-16`}>
-      <h1 className="flex mx-10 py-3 font-bold h-16 items-center">{title}</h1>
+      <h1 className="flex mx-10 py-3 font-bold text-lg h-16 items-center">
+        {title}
+      </h1>
       <div className={`${className}`}>{children}</div>
     </Tag>
   );
