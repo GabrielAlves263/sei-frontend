@@ -1,6 +1,7 @@
 export interface Topic {
   id: number;
   name: string;
+  resume: string;
 }
 
 export interface Ap {
