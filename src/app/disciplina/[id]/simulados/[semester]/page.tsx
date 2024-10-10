@@ -67,7 +67,7 @@ export default async function PageSimulados({ params }: Props) {
       >
         <LabelList
           id={params.id}
-          semester={params.semester.replace("_", ".")}
+          semester={params.semester.replace("-", ".")}
         />
       </Container>
     </>

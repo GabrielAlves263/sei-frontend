@@ -25,7 +25,11 @@ export default async function HorizontalCardList({
   return (
     <>
       {topics.map((topic: Topic) => (
-        <HorizontalCard key={topic.id} text={topic.name} />
+        <HorizontalCard
+          key={topic.id}
+          text={topic.name}
+          path={`/disciplina/${id}/${topic.name.replace(" ", "-")}`}
+        />
       ))}
     </>
   );

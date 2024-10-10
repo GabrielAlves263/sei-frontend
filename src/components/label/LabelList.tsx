@@ -33,7 +33,7 @@ export default async function LabelList({ id, semester }: LabelListProps) {
               text={test.semester}
               path={`/disciplina/1/simulados/${test.semester.replace(
                 ".",
-                "_"
+                "-"
               )}`}
             />
           ))
