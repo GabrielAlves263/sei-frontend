@@ -28,7 +28,7 @@ export default async function HorizontalCardList({
         <HorizontalCard
           key={topic.id}
           text={topic.name}
-          path={`/disciplina/${id}/${topic.name.replace(" ", "-")}`}
+          path={`/disciplina/${id}/${topic.name.replaceAll(" ", "-")}`}
         />
       ))}
     </>

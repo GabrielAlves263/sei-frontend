@@ -1,6 +1,7 @@
 import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
 import OptionsBar from "@/components/optionsMenu/OptionsMenu";
+import { getTopicOptions } from "@/constants/options";
 import { Subject, Topic } from "@/types/subject";
 import { Metadata } from "next";
 
@@ -9,7 +10,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  params.topic_name = params.topic_name.replace("-", " ");
+  params.topic_name = params.topic_name.replaceAll("-", " ");
 
   return {
     title: params.topic_name,
@@ -31,16 +32,18 @@ async function getData(id: string, topic_name: string) {
 export default async function PageResume({ params }: Props) {
   const paths = [
     `/disciplina/${params.id}`,
-    `/disciplina/${params.id}/${params.topic_name.replace(" ", "-")}`,
-    `/disciplina/${params.id}/${params.topic_name.replace(" ", "-")}`,
+    `/disciplina/${params.id}/${params.topic_name.replaceAll(" ", "-")}`,
+    `/disciplina/${params.id}/${params.topic_name.replaceAll(" ", "-")}`,
   ];
 
   const topic: Topic[] = await getData(params.id, params.topic_name);
 
+  const options = getTopicOptions(params.id, params.topic_name);
+
   return (
     <>
       <Navigator paths={paths} />
-      <OptionsBar id={params.id} />
+      <OptionsBar options={options} />
       <Container
         title={`Resumo de ${topic[0].name}`}
         className="mx-10 flex flex-col gap-y-3"

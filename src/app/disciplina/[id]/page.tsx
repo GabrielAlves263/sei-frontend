@@ -2,6 +2,7 @@ import HorizontalCardList from "@/components/card/HorizontalCardList";
 import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
 import OptionsBar from "@/components/optionsMenu/OptionsMenu";
+import { getSubjectOptions } from "@/constants/options";
 import { Subject } from "@/types/subject";
 import { Metadata } from "next";
 
@@ -56,11 +57,12 @@ async function getData(id: string) {
 export default async function PageSubject({ params }: Props) {
   const paths = [`/disciplina/${params.id}`];
   const subject = await getData(params.id);
+  const options = getSubjectOptions(params.id);
 
   return (
     <>
       <Navigator paths={paths} />
-      <OptionsBar id={params.id} />
+      <OptionsBar options={options} />
       <Container title={subject.name} className="mx-10 flex flex-col gap-y-3">
         <HorizontalCardList id={params.id} />
       </Container>

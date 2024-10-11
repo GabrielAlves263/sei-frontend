@@ -2,6 +2,7 @@ import Container from "@/components/container/Container";
 import LabelList from "@/components/label/LabelList";
 import Navigator from "@/components/navigator/Navigator";
 import OptionsBar from "@/components/optionsMenu/OptionsMenu";
+import { getSubjectOptions } from "@/constants/options";
 import { Subject } from "@/types/subject";
 import { Metadata } from "next";
 
@@ -56,18 +57,19 @@ async function getData(id: string) {
 export default async function PageSimulados({ params }: Props) {
   const paths = [`/disciplina/${params.id}`];
   const subject = await getData(params.id);
+  const options = getSubjectOptions(params.id);
 
   return (
     <>
       <Navigator paths={paths} />
-      <OptionsBar id={params.id} semester={params.semester} />
+      <OptionsBar options={options} />
       <Container
         title={`Avaliações de ${subject.name}`}
         className="grid grid-cols-[repeat(auto-fill,16rem)] justify-center gap-7"
       >
         <LabelList
           id={params.id}
-          semester={params.semester.replace("-", ".")}
+          semester={params.semester.replaceAll("-", ".")}
         />
       </Container>
     </>

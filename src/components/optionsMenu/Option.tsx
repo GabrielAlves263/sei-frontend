@@ -1,13 +1,23 @@
+import { OptionProps } from "@/types/options";
 import Link from "next/link";
-import { type IconType } from "react-icons";
+import { AiOutlineFileSearch } from "react-icons/ai";
+import { GoBook, GoChecklist, GoPencil, GoVideo } from "react-icons/go";
 
-interface OptionProps {
-  icon: IconType;
-  path: string;
-  currentPath: string;
+function renderIcon(icon: string) {
+  if (icon === "topics") {
+    return <AiOutlineFileSearch className="size-8" />;
+  } else if (icon === "tests") {
+    return <GoChecklist className="size-8" />;
+  } else if (icon === "resume") {
+    return <GoBook className="size-8" />;
+  } else if (icon === "videos") {
+    return <GoVideo className="size-8" />;
+  } else if (icon === "questions") {
+    return <GoPencil className="size-8" />;
+  }
 }
 
-export default function Option({ icon: Icon, path, currentPath }: OptionProps) {
+export default function Option({ icon, path, currentPath }: OptionProps) {
   return (
     <li>
       <Link
@@ -15,7 +25,7 @@ export default function Option({ icon: Icon, path, currentPath }: OptionProps) {
         data-active={currentPath === path}
         className="text-text dark:text-paper hover:opacity-50 data-[active=true]:text-paper dark:data-[active=true]:text-text"
       >
-        <Icon className="size-8" />
+        {renderIcon(icon)}
       </Link>
     </li>
   );
