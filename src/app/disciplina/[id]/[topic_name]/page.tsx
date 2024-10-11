@@ -36,13 +36,14 @@ export default async function PageResume({ params }: Props) {
 
   const paths = [
     `/disciplina/${params.id}`,
-    `/disciplina/${params.id}/${params.topic_name.replaceAll(" ", "-")}`,
-    `/disciplina/${params.id}/${params.topic_name.replaceAll(" ", "-")}`,
+    `/disciplina/${params.id}/${params.topic_name}`,
+    `/disciplina/${params.id}/${params.topic_name}`,
   ];
 
   const topic: Topic[] = await getData(params.id, params.topic_name);
 
   const options = getTopicOptions(params.id, params.topic_name);
+  console.log(options);
 
   return (
     <>
@@ -54,7 +55,11 @@ export default async function PageResume({ params }: Props) {
       >
         <div
           key={topic[0].id}
-          dangerouslySetInnerHTML={{ __html: topic[0].resume }}
+          dangerouslySetInnerHTML={
+            topic[0].resume
+              ? { __html: topic[0].resume }
+              : { __html: "Resumo não encontrado!" }
+          }
         />
       </Container>
     </>
