@@ -15,9 +15,9 @@ export default function OptionsBar({ options }: OptionBarProps) {
       <ul className="flex gap-4">
         {options.map((option) => (
           <Option
-            key={option.path}
+            key={option.paths}
             icon={option.icon}
-            path={option.path}
+            paths={option.paths}
             currentPath={currentPath}
           />
         ))}

@@ -17,12 +17,12 @@ function renderIcon(icon: string) {
   }
 }
 
-export default function Option({ icon, path, currentPath }: OptionProps) {
+export default function Option({ icon, paths, currentPath = "" }: OptionProps) {
   return (
     <li>
       <Link
-        href={path}
-        data-active={currentPath === path}
+        href={paths[0]}
+        data-active={paths.includes(currentPath)}
         className="text-text dark:text-paper hover:opacity-50 data-[active=true]:text-paper dark:data-[active=true]:text-text"
       >
         {renderIcon(icon)}

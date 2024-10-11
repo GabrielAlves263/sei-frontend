@@ -1,5 +1,5 @@
 export interface OptionProps {
   icon: "topics" | "tests" | "resume" | "videos" | "questions";
-  path: string;
+  paths: string[];
   currentPath?: string;
 }

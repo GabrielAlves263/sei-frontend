@@ -1,13 +1,19 @@
 import { OptionProps } from "@/types/options";
 
-export const getSubjectOptions = (id: string): OptionProps[] => [
+export const getSubjectOptions = (
+  id: string,
+  semester?: string
+): OptionProps[] => [
   {
     icon: "topics",
-    path: `/disciplina/${id}`,
+    paths: [`/disciplina/${id}`],
   },
   {
     icon: "tests",
-    path: `/disciplina/${id}/simulados`,
+    paths: [
+      `/disciplina/${id}/simulados`,
+      `/disciplina/${id}/simulados/${semester ? semester : ""}`,
+    ],
   },
 ];
 
@@ -17,18 +23,18 @@ export const getTopicOptions = (
 ): OptionProps[] => [
   {
     icon: "resume",
-    path: `/disciplina/${id}/${topicName}`,
+    paths: [`/disciplina/${id}/${topicName}`],
   },
   {
     icon: "videos",
-    path: `/disciplina/${id}/${topicName}/videos`,
+    paths: [`/disciplina/${id}/${topicName}/videos`],
   },
   {
     icon: "questions",
-    path: `/disciplina/${id}/${topicName}/questions`,
+    paths: [`/disciplina/${id}/${topicName}/questions`],
   },
   {
     icon: "tests",
-    path: `/disciplina/${id}/simulados`,
+    paths: [`/disciplina/${id}/simulados`],
   },
 ];
