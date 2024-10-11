@@ -35,9 +35,12 @@ export default async function PageResume({ params }: Props) {
   params.topic_name = decodeURI(params.topic_name);
 
   const paths = [
-    `/disciplina/${params.id}`,
-    `/disciplina/${params.id}/${params.topic_name}`,
-    `/disciplina/${params.id}/${params.topic_name}`,
+    { url: `/disciplina/${params.id}`, text: params.id },
+    {
+      url: `/disciplina/${params.id}/${params.topic_name}`,
+      text: params.topic_name,
+    },
+    { url: `/disciplina/${params.id}/${params.topic_name}`, text: "Resumo" },
   ];
 
   const topic: Topic[] = await getData(params.id, params.topic_name);

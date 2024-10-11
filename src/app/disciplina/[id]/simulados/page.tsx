@@ -55,8 +55,11 @@ async function getData(id: string) {
 }
 
 export default async function PageSimulados({ params }: Props) {
-  const paths = [`/disciplina/${params.id}`];
   const subject = await getData(params.id);
+  const paths = [
+    { url: `/disciplina/${params.id}`, text: subject.name },
+    { url: `/disciplina/${params.id}/simulados`, text: "Simulados" },
+  ];
   const options = getSubjectOptions(params.id);
 
   return (
