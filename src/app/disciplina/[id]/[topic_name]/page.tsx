@@ -10,10 +10,10 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  params.topic_name = params.topic_name.replaceAll("-", " ");
+  params.topic_name = decodeURI(params.topic_name);
 
   return {
-    title: params.topic_name,
+    title: params.topic_name.replaceAll("-", " "),
   };
 }
 
@@ -26,10 +26,14 @@ async function getData(id: string, topic_name: string) {
 
   const data: Subject[] = await res.json();
 
-  return data[0].topics.filter((topic) => topic.name === topic_name);
+  return data[0].topics.filter(
+    (topic) => topic.name === topic_name.replaceAll("-", " ")
+  );
 }
 
 export default async function PageResume({ params }: Props) {
+  params.topic_name = decodeURI(params.topic_name);
+
   const paths = [
     `/disciplina/${params.id}`,
     `/disciplina/${params.id}/${params.topic_name.replaceAll(" ", "-")}`,
