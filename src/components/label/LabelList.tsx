@@ -22,7 +22,6 @@ async function getData(id: string, semester: string | undefined) {
 
 export default async function LabelList({ id, semester }: LabelListProps) {
   const tests = await getData(id, semester);
-  console.log(tests);
 
   return (
     <>

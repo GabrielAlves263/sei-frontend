@@ -8,7 +8,7 @@ interface OptionBarProps {
 }
 
 export default function OptionsBar({ options }: OptionBarProps) {
-  const currentPath = usePathname();
+  const currentPath = decodeURI(usePathname());
 
   return (
     <nav className="flex items-center justify-center w-fit h-10 bg-primary rounded-xl px-4 py-2">
