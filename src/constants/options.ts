@@ -31,7 +31,7 @@ export const getTopicOptions = (
   },
   {
     icon: "questions",
-    paths: [`/disciplina/${id}/${topicName}/questions`],
+    paths: [`/disciplina/${id}/${topicName}/questoes`],
   },
   {
     icon: "tests",

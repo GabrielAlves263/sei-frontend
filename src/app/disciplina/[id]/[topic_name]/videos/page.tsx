@@ -27,9 +27,8 @@ async function getData(id: string, topic_name: string) {
   );
 }
 
-export default async function PageResume({ params }: Props) {
+export default async function PageVideos({ params }: Props) {
   params.topic_name = decodeURI(params.topic_name);
-
   const topic: Topic[] = await getData(params.id, params.topic_name);
 
   return (
