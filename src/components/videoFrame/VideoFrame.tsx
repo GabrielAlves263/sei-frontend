@@ -11,7 +11,7 @@ interface videoFrameProps {
 
 export default function VideoFrame({ url }: videoFrameProps) {
   return (
-    <div className="relative pt-[56.25%]">
+    <li className="relative pt-[56.25%]">
       <ReactPlayer
         url={url}
         controls
@@ -19,6 +19,6 @@ export default function VideoFrame({ url }: videoFrameProps) {
         height="100%"
         className="absolute top-0 left-0"
       />
-    </div>
+    </li>
   );
 }
