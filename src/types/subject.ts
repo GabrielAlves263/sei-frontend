@@ -1,7 +1,13 @@
+export interface Video {
+  id: string;
+  url: "string";
+}
+
 export interface Topic {
   id: number;
   name: string;
   resume: string;
+  videos: Video[];
 }
 
 export interface Ap {
