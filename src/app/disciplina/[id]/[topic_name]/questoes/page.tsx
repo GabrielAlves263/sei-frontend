@@ -1,3 +1,4 @@
+import NotFound from "@/components/notFound/NotFound";
 import { Subject, Topic } from "@/types/subject";
 
 interface Props {
@@ -21,17 +22,22 @@ async function getData(id: string, topic_name: string) {
 export default async function PageQuestoes({ params }: Props) {
   params.topic_name = decodeURI(params.topic_name);
   const topic: Topic[] = await getData(params.id, params.topic_name);
+  const questions = topic[0].questions ?? [];
 
   return (
-    <>
-      <div
-        key={topic[0].id}
-        dangerouslySetInnerHTML={
-          topic[0].resume
-            ? { __html: topic[0].resume }
-            : { __html: "Resumo não encontrado!" }
-        }
-      />
-    </>
+    <div className="flex flex-col items-center gap-y-9">
+      {questions.length > 0 ? (
+        "Questões"
+      ) : (
+        <NotFound>
+          <p>
+            Nenhuma questão sobre{" "}
+            <strong className="text-orange">{topic[0].name}</strong> foi
+            encontrada!
+          </p>
+          <p>Novas Questões serão adicionadas em breve.</p>
+        </NotFound>
+      )}
+    </div>
   );
 }

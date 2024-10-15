@@ -3,11 +3,16 @@ export interface Video {
   url: "string";
 }
 
+export interface Question {
+  id: string;
+}
+
 export interface Topic {
   id: number;
   name: string;
   resume: string;
   videos: Video[];
+  questions: Question[];
 }
 
 export interface Ap {
