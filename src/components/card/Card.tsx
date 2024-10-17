@@ -44,7 +44,7 @@ export function Card({
         />
       </div>
       <Link href={path}>
-        <div className="flex items-center justify-center text-text-contrast relative -bottom-3 bg-primary-dark w-full h-16 rounded-b-3xl font-bold px-4">
+        <div className="flex items-center justify-center text-center text-text-contrast relative -bottom-3 bg-primary-dark w-full h-16 rounded-b-3xl font-bold px-4">
           <h4>{text}</h4>
         </div>
       </Link>
