@@ -2,6 +2,7 @@
 import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
 import OptionsBar from "@/components/optionsMenu/OptionsMenu";
+import TopicList from "@/components/topicList/TopicList";
 import { getTopicOptions } from "@/constants/options";
 import { usePathname } from "next/navigation";
 
@@ -36,12 +37,20 @@ export default function TopicLayout({ params, children }: Props) {
     <>
       <Navigator paths={paths} />
       <OptionsBar options={options} />
-      <Container
-        title={`${contentType} de ${params.topic_name.replace("-", " ")}`}
-        className="mx-10 flex flex-col gap-y-3"
-      >
-        {children}
-      </Container>
+      <div className="flex flex-row gap-4">
+        <Container
+          title={`${contentType} de ${params.topic_name.replace("-", " ")}`}
+          className="mx-10 flex flex-col items-center gap-y-9"
+        >
+          {children}
+        </Container>
+        <div className="flex flex-col gap-4">
+          <Container title="Cálculo I" titleColor="primary-dark">
+            <TopicList id={params.id} currentPath={currentPath} />
+          </Container>
+          <Container title="Avalie" titleColor="primary-dark"></Container>
+        </div>
+      </div>
     </>
   );
 }
