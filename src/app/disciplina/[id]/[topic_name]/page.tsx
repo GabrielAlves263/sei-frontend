@@ -33,15 +33,13 @@ export default async function PageResume({ params }: Props) {
   const topic: Topic[] = await getData(params.id, params.topic_name);
 
   return (
-    <>
-      <div
-        key={topic[0].id}
-        dangerouslySetInnerHTML={
-          topic[0].resume
-            ? { __html: topic[0].resume }
-            : { __html: "Resumo não encontrado!" }
-        }
-      />
-    </>
+    <div
+      key={topic[0].id}
+      dangerouslySetInnerHTML={
+        topic[0].resume
+          ? { __html: topic[0].resume }
+          : { __html: "Resumo não encontrado!" }
+      }
+    />
   );
 }

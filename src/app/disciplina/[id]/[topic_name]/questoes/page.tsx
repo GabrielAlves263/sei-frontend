@@ -25,7 +25,7 @@ export default async function PageQuestoes({ params }: Props) {
   const questions = topic[0].questions ?? [];
 
   return (
-    <div className="flex flex-col items-center gap-y-9">
+    <>
       {questions.length > 0 ? (
         "Questões"
       ) : (
@@ -35,9 +35,9 @@ export default async function PageQuestoes({ params }: Props) {
             <strong className="text-orange">{topic[0].name}</strong> foi
             encontrada!
           </p>
-          <p>Novas Questões serão adicionadas em breve.</p>
+          <p>Novas questões serão adicionadas em breve.</p>
         </NotFound>
       )}
-    </div>
+    </>
   );
 }

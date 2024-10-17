@@ -11,7 +11,7 @@ export default function NotFound({
   imgSrc = "/notFound.png",
 }: NotFoundProps) {
   return (
-    <>
+    <div className="flex flex-col items-center gap-y-9">
       <Image
         src={imgSrc}
         alt={"Não encontrado"}
@@ -22,6 +22,6 @@ export default function NotFound({
       <div className="flex flex-col text-center text-xl text-primary-dark font-bold">
         {children}
       </div>
-    </>
+    </div>
   );
 }

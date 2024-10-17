@@ -35,10 +35,10 @@ export default async function PageVideos({ params }: Props) {
   const videos = topic[0].videos ?? [];
 
   return (
-    <div className="flex flex-col items-center gap-y-9">
-      {videos.length > 0 ? (
-        <VideoFrameList videos={videos} />
-      ) : (
+    <>
+      {videos.length > 0 && <VideoFrameList videos={videos} />}
+
+      {videos.length <= 0 && (
         <NotFound>
           <p>
             Nenhuma videoaula sobre{" "}
@@ -48,6 +48,6 @@ export default async function PageVideos({ params }: Props) {
           <p>Novas videoaulas serão adicionadas em breve.</p>
         </NotFound>
       )}
-    </div>
+    </>
   );
 }
