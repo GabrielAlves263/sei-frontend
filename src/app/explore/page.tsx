@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default async function PageExplore() {
   return (
     <Container
-      title="Minhas Disciplinas"
+      title="Disciplinas"
       className="grid grid-cols-[repeat(auto-fill,17rem)] justify-center gap-7"
     >
       <CardList />
