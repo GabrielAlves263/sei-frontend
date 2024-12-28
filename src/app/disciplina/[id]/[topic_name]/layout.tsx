@@ -2,9 +2,13 @@
 import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
 import OptionsBar from "@/components/optionsMenu/OptionsMenu";
-import TopicList from "@/components/topicList/TopicList";
 import { getTopicOptions } from "@/constants/options";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
+
+const TopicList = dynamic(() => import("@/components/topicList/TopicList"), {
+  ssr: true,
+});
 
 interface Props {
   params: {

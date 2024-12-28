@@ -10,5 +10,11 @@ interface videoFrameProps {
 }
 
 export default function VideoFrame({ url }: videoFrameProps) {
-  return <ReactPlayer url={url} controls className="aspect-video" />;
+  return (
+    <ReactPlayer
+      url={`https://www.youtube.com/watch?v=${url}`}
+      controls
+      className="aspect-video"
+    />
+  );
 }

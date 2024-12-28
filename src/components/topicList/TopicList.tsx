@@ -26,7 +26,7 @@ export default async function TopicList({ id, currentPath }: TopicListProps) {
               `/disciplina/${id}/${topic.name.replaceAll(" ", "-")}`
             )}
             href={`/disciplina/${id}/${topic.name.replaceAll(" ", "-")}`}
-            className="data-[active=true]:text-primary-dark"
+            className="data-[active=true]:text-primary dark:data-[active=true]:text-primary-dark"
           >
             {topic.name}
           </Link>

@@ -19,13 +19,13 @@ export default function HorizontalCard({ text, path }: IHorizontalCardProps) {
       </Link>
       <div className="h-full flex items-center justify-center px-3 gap-x-3 bg-primary rounded-r-lg">
         <Link href={path || ""}>
-          <HiOutlineBookOpen className="size-6" />
+          <HiOutlineBookOpen className="size-6 hover:text-text-light" />
         </Link>
         <Link href={`${path}/videos` || ""}>
-          <RxVideo className="size-6" />
+          <RxVideo className="size-6 hover:text-text-light" />
         </Link>
         <Link href={`${path}/questoes` || ""}>
-          <LuPencil className="size-6" />
+          <LuPencil className="size-6 hover:text-text-light" />
         </Link>
       </div>
     </article>
