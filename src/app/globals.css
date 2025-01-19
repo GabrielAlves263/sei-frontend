@@ -13,6 +13,9 @@
   --color-paper: #ffffff;
   --color-orange: #f96632;
   --color-sidebar: #36264d;
+  --color-success-light: #77ffc0;
+  --color-success: #00ff88;
+  --color-login-card: #2f2841;
 }
 
 .dark {
@@ -26,6 +29,9 @@
   --color-paper: #2b2b2b;
   --color-orange: #ff6e4a;
   --color-sidebar: #201b2c;
+  --color-success-light: #77ffc0;
+  --color-success: #00ff88;
+  --color-login-card: #2f2841;
 }
 
 html,
