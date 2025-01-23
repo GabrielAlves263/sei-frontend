@@ -1,5 +1,4 @@
 import { Wrapper } from "@/components/wrapper/Wrapper";
-import ThemeProvider from "@/providers/themeProvider";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -22,9 +21,7 @@ export default function RootLayout({
       <body
         className={`${poppins.className} overflow-x-hidden transition-colors`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Wrapper>{children}</Wrapper>
-        </ThemeProvider>
+        <Wrapper>{children}</Wrapper>
       </body>
     </html>
   );

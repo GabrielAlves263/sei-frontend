@@ -1,4 +1,5 @@
 "use client";
+import ThemeProvider from "@/providers/themeProvider";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import Header from "../header/Header";
@@ -17,18 +18,20 @@ export function Wrapper({ children }: IWrapperProps) {
     setExpanded((curr) => !curr);
   };
 
-  return pathName.includes("/login") ? (
+  return pathName.includes("/login") || pathName.includes("/register") ? (
     children
   ) : (
-    <div className="flex">
-      <SideMenu expanded={expanded} toggleExpanded={toggleExpanded} />
-      <main
-        className={`flex flex-1 flex-col flex-wrap justify-center mr-4 p-6 transition-all duration-200 delay-150 gap-y-6
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <div className="flex">
+        <SideMenu expanded={expanded} toggleExpanded={toggleExpanded} />
+        <main
+          className={`flex flex-1 flex-col flex-wrap justify-center mr-4 p-6 transition-all duration-200 delay-150 gap-y-6
     ${expanded ? "md:ml-60" : "md:ml-16"}`}
-      >
-        <Header />
-        {children}
-      </main>
-    </div>
+        >
+          <Header />
+          {children}
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
