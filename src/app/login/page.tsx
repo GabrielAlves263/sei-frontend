@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function LoginPage() {
   return (
-    <main className="bg-sidebar dark:bg-sidebar h-screen w-full flex flex-col lg:flex-row justify-center items-center">
+    <main className="dark bg-sidebar dark:bg-sidebar py-8 lg:py-0 h-fit lg:h-screen w-full flex flex-col lg:flex-row justify-center items-center">
       <div className="w-full lg:w-[50vw] h-auto lg:h-full flex flex-col justify-center items-center">
         <h1 className="text-[3vw] text-success-light hidden lg:block">
-          Faça seu login <br /> E venha estudar com a gente
+          Faça seu login <br /> e venha estudar com a gente
         </h1>
         <Image
           src={"students.svg"}
