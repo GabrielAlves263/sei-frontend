@@ -1,5 +1,6 @@
 "use client";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaMoon, FaUser } from "react-icons/fa6";
 import { MdNotifications, MdSunny } from "react-icons/md";
@@ -14,6 +15,8 @@ export default function Header() {
     darkTheme ? setTheme("light") : setTheme("dark");
     setDarkTheme((curr) => !curr);
   };
+
+  const router = useRouter();
 
   return (
     <header className="flex justify-between mt-12 md:mt-0">
@@ -32,7 +35,7 @@ export default function Header() {
           color="text-text"
         />
         <ButtonRound
-          action={() => {}}
+          action={() => router.push("/login")}
           icon={FaUser}
           bgColor="bg-paper"
           color="text-text"
