@@ -31,7 +31,7 @@ export default function LoginCard() {
         />
         <FormInput
           label="Confirmar senha"
-          name="password"
+          name="confirmPassword"
           placeholder="Confirmar senha"
           type="password"
         />
