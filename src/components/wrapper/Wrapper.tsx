@@ -1,6 +1,7 @@
 "use client";
 import ThemeProvider from "@/providers/themeProvider";
-import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Header from "../header/Header";
 import { SideMenu } from "../sideMenu/SideMenu";
@@ -9,16 +10,26 @@ interface IWrapperProps {
   children: React.ReactNode;
 }
 
+function isAuthPage(pathName: string): boolean {
+  return pathName.includes("/login") || pathName.includes("/register");
+}
+
 export function Wrapper({ children }: IWrapperProps) {
   const [expanded, setExpanded] = useState(true);
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   const pathName = usePathname();
+
+  if (!isAuthPage(pathName) && status !== "authenticated") {
+    router.push("/login");
+  }
 
   const toggleExpanded = () => {
     setExpanded((curr) => !curr);
   };
 
-  return pathName.includes("/login") || pathName.includes("/register") ? (
+  return isAuthPage(pathName) ? (
     children
   ) : (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

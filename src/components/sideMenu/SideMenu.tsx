@@ -1,5 +1,6 @@
 "use client";
 import { Disclosure, DisclosureButton } from "@headlessui/react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -90,7 +91,7 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
 
           <MenuItem
             text="Configurações"
-            path="/settings"
+            path="settings"
             currentPath={currentPath}
             icon={MdSettings}
             expanded={expanded}
@@ -98,7 +99,8 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
 
           <MenuItem
             text="Sair"
-            path="/quit"
+            path=""
+            action={async () => await signOut()}
             currentPath={currentPath}
             icon={BiSolidExit}
             expanded={expanded}

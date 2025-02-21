@@ -1,15 +1,19 @@
 import CardList from "@/components/card/CardList";
 import Container from "@/components/container/Container";
 import { Metadata } from "next";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "SEI - Página Inicial",
 };
 
 export default async function Home() {
-  const data = await fetch("http://localhost:5000/subjects");
+  const session = await getServerSession();
 
-  const subjects = await data.json();
+  if (!session) {
+    redirect("/login");
+  }
 
   return (
     <Container

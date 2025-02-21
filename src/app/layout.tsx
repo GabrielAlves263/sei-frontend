@@ -1,5 +1,7 @@
 import { Wrapper } from "@/components/wrapper/Wrapper";
+import CustomSessionProvider from "@/providers/sessionProvider";
 import type { Metadata } from "next";
+import { getServerSession } from "next-auth";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -11,18 +13,26 @@ export const metadata: Metadata = {
     "Encontre todos os recursos de estudo que você precisar, em um só lugar. Resumos, questões, vídeos e muito mais.",
 };
 
-export default function RootLayout({
+function isAuthPage(pathName: string): boolean {
+  return pathName.includes("/login") || pathName.includes("/register");
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession();
+
   return (
     <html lang="pt-Br">
-      <body
-        className={`${poppins.className} overflow-x-hidden transition-colors`}
-      >
-        <Wrapper>{children}</Wrapper>
-      </body>
+      <CustomSessionProvider session={session}>
+        <body
+          className={`${poppins.className} overflow-x-hidden transition-colors`}
+        >
+          <Wrapper>{children}</Wrapper>
+        </body>
+      </CustomSessionProvider>
     </html>
   );
 }
