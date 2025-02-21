@@ -7,6 +7,7 @@ interface IMenuItemProps {
   currentPath: string;
   icon: IconType;
   expanded: boolean;
+  action?: () => void;
 }
 
 export function MenuItem({
@@ -15,10 +16,12 @@ export function MenuItem({
   currentPath,
   icon: Icon,
   expanded,
+  action,
 }: IMenuItemProps) {
   return (
     <li className="group flex items-center">
       <Link
+        onClick={action}
         href={path}
         data-active={currentPath === path}
         className={`relative flex items-center w-full overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-75 duration-150
