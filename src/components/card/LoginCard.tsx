@@ -1,10 +1,36 @@
+"use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import FormInput from "../form/FormInput";
 import FormSubmit from "../form/FormSubmit";
 
+const loginSchema = z.object({
+  email: z.string(),
+  password: z.string(),
+});
+
+type LoginSchema = z.infer<typeof loginSchema>;
+
 export default function LoginCard() {
+  const { register, handleSubmit } = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  function handleLogin(data: LoginSchema) {
+    signIn("credentials", {
+      ...data,
+      callbackUrl: "/",
+    });
+  }
+
   return (
-    <form className="w-10/12 md:w-3/4 lg:w-3/5 flex justify-center items-center flex-col py-8 px-9 bg-primary-dark dark:bg-login-card rounded-2xl shadow-lg">
+    <form
+      onSubmit={handleSubmit(handleLogin)}
+      className="w-10/12 md:w-3/4 lg:w-3/5 flex justify-center items-center flex-col py-8 px-9 bg-primary-dark dark:bg-login-card rounded-2xl shadow-lg"
+    >
       <h1 className="text-success text-3xl font-extrabold m-0">LOGIN</h1>
 
       <FormInput
@@ -12,6 +38,7 @@ export default function LoginCard() {
         name="email"
         placeholder="Endereço de email"
         type="email"
+        register={register}
       />
 
       <FormInput
@@ -19,6 +46,7 @@ export default function LoginCard() {
         name="password"
         placeholder="Senha"
         type="password"
+        register={register}
       />
 
       <div className="flex justify-between w-full text-background dark:text-text">
