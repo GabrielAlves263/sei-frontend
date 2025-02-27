@@ -41,8 +41,6 @@ export default async function HorizontalCardList({
 }: HorizontalCardListProps) {
   const topics = await getTopics(id);
 
-  console.log(topics);
-
   return (
     <>
       {topics.map((topic: Topic) => (
