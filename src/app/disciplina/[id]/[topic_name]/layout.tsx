@@ -49,10 +49,9 @@ export default function TopicLayout({ params, children }: Props) {
           {children}
         </Container>
         <div className="flex flex-col gap-4">
-          <Container title="Cálculo I" titleColor="primary-dark">
+          <Container title="Tópicos" titleColor="primary-dark">
             <TopicList id={params.id} currentPath={currentPath} />
           </Container>
-          <Container title="Avalie" titleColor="primary-dark"></Container>
         </div>
       </div>
     </>
