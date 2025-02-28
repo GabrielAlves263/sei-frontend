@@ -3,7 +3,7 @@ import Container from "@/components/container/Container";
 import Navigator from "@/components/navigator/Navigator";
 import OptionsBar from "@/components/optionsMenu/OptionsMenu";
 import { getSubjectOptions } from "@/constants/options";
-import { Subject } from "@/types/subject";
+import { fetchServer } from "@/libs/fetchServer";
 import { Metadata } from "next";
 
 interface Props {
@@ -11,51 +11,57 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const res = await fetch(`http://localhost:5000/subjects/?id=${params.id}`);
+  const subject = await getSubject(params.id);
 
-  if (!res.ok) {
-    return {
-      title: "Disciplina não encontrada",
-    };
-  }
-
-  const data: Subject[] = await res.json();
-
-  if (data.length === 0) {
+  if (!subject) {
     return {
       title: "Disciplina não encontrada",
     };
   }
 
   return {
-    title: data[0].name,
+    title: subject.name,
   };
 }
 
-async function getData(id: string) {
-  const res = await fetch(`http://localhost:5000/subjects/?id=${id}`);
+// Essa função aparece em vários lugares, considerar reutilizar
+async function getSubject(id: string) {
+  try {
+    const res = await fetchServer(
+      `http://localhost:8080/api/v1/subjects/${id}`
+    );
 
-  if (!res.ok) {
-    return {
-      name: "Erro: Disciplina não encontrada",
-    };
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+    return null;
   }
-
-  const data: Subject[] = await res.json();
-
-  if (data.length === 0) {
-    return {
-      name: "Erro: Disciplina não encontrada",
-    };
-  }
-
-  return {
-    name: data[0].name,
-  };
 }
+
+// async function getData(id: string) {
+//   const res = await fetch(`http://localhost:5000/subjects/?id=${id}`);
+
+//   if (!res.ok) {
+//     return {
+//       name: "Erro: Disciplina não encontrada",
+//     };
+//   }
+
+//   const data: Subject[] = await res.json();
+
+//   if (data.length === 0) {
+//     return {
+//       name: "Erro: Disciplina não encontrada",
+//     };
+//   }
+
+//   return {
+//     name: data[0].name,
+//   };
+// }
 
 export default async function PageSubject({ params }: Props) {
-  const subject = await getData(params.id);
+  const subject = await getSubject(params.id);
   const paths = [{ url: `/disciplina/${params.id}`, text: subject.name }];
   const options = getSubjectOptions(params.id);
 
