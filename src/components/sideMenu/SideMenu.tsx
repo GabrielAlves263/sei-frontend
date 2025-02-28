@@ -72,7 +72,7 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
           />
           <MenuItem
             text="Notas"
-            path={`${currentPath}/`}
+            path=""
             currentPath={currentPath}
             icon={BiSolidBook}
             expanded={expanded}
@@ -95,7 +95,7 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
 
           <MenuItem
             text="Configurações"
-            path="`${currentPath}/`"
+            path=""
             currentPath={currentPath}
             icon={MdSettings}
             expanded={expanded}
