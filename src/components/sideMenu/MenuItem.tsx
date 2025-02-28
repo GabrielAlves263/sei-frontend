@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { type IconType } from "react-icons";
+import { CgExternal } from "react-icons/cg";
 
 interface IMenuItemProps {
   text: string;
@@ -8,6 +9,7 @@ interface IMenuItemProps {
   icon: IconType;
   expanded: boolean;
   action?: () => void;
+  externalLink?: string;
 }
 
 export function MenuItem({
@@ -17,20 +19,37 @@ export function MenuItem({
   icon: Icon,
   expanded,
   action,
+  externalLink,
 }: IMenuItemProps) {
   return (
     <li className="group flex items-center">
-      <Link
-        onClick={action}
-        href={path}
-        data-active={currentPath === path}
-        className={`relative flex items-center w-full overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-75 duration-150
+      {externalLink ? (
+        <Link
+          onClick={action}
+          href={externalLink || ""}
+          target="_blank"
+          data-active={currentPath === path}
+          className={`relative flex items-center w-full overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-75 duration-150
           data-[active=true]:text-text data-[active=true]:bg-background
           ${expanded ? "md:ps-12" : ""}`}
-      >
-        <Icon className="w-6 h-6" />
-        <span className={expanded ? "md:block" : "md:hidden"}>{text}</span>
-      </Link>
+        >
+          <Icon className="w-6 h-6" />
+          <span className={expanded ? "md:block" : "md:hidden"}>{text}</span>
+          {expanded && <CgExternal className="w-6 h-6" />}
+        </Link>
+      ) : (
+        <Link
+          onClick={action}
+          href={path}
+          data-active={currentPath === path}
+          className={`relative flex items-center w-full overflow-hidden p-2 rounded-lg hover:text-text gap-x-2 transition-all delay-75 duration-150
+          data-[active=true]:text-text data-[active=true]:bg-background
+          ${expanded ? "md:ps-12" : ""}`}
+        >
+          <Icon className="w-6 h-6" />
+          <span className={expanded ? "md:block" : "md:hidden"}>{text}</span>
+        </Link>
+      )}
 
       {!expanded && (
         <span

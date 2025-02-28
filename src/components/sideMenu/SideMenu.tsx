@@ -8,10 +8,8 @@ import { BiSolidBook, BiSolidExit } from "react-icons/bi";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaAngleLeft } from "react-icons/fa6";
 import { HiMenuAlt2 } from "react-icons/hi";
-import { MdSettings } from "react-icons/md";
-import { RiCompassFill } from "react-icons/ri";
+import { RiCompassFill, RiFlowChart } from "react-icons/ri";
 import { TbHomeFilled } from "react-icons/tb";
-import { toast } from "react-toastify";
 import { MenuItem } from "./MenuItem";
 
 interface ISideMenuProps {
@@ -70,7 +68,9 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
             icon={RiCompassFill}
             expanded={expanded}
           />
-          <MenuItem
+
+          {/* Implementação futura: calculadora de notas */
+          /* <MenuItem
             text="Notas"
             path=""
             currentPath={currentPath}
@@ -79,14 +79,7 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
             action={() => {
               toast.info("Essa funcionalidade ainda não está disponível.");
             }}
-          />
-          <MenuItem
-            text="Calendário"
-            path="/calendario"
-            currentPath={currentPath}
-            icon={FaCalendarAlt}
-            expanded={expanded}
-          />
+          /> */}
 
           <hr
             className={` mx-auto h-[1px] bg-text-light border-none rounded-sm
@@ -94,6 +87,36 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
           />
 
           <MenuItem
+            text="Sigaa"
+            path=""
+            currentPath={currentPath}
+            icon={BiSolidBook}
+            expanded={expanded}
+            externalLink="https://si3.ufc.br/sigaa"
+          />
+          <MenuItem
+            text="Calendário"
+            path=""
+            currentPath={currentPath}
+            icon={FaCalendarAlt}
+            expanded={expanded}
+            externalLink="https://www.ufc.br/calendario-universitario/2025"
+          />
+          <MenuItem
+            text="UFC Flow"
+            path=""
+            currentPath={currentPath}
+            icon={RiFlowChart}
+            expanded={expanded}
+            externalLink="https://ufc-flow.vercel.app/engenharia-de-computacao-ufc-sobral/2006-2"
+          />
+
+          <hr
+            className={` mx-auto h-[1px] bg-text-light border-none rounded-sm
+            ${expanded ? "w-2/3" : "w-full"}`}
+          />
+
+          {/* <MenuItem
             text="Configurações"
             path=""
             currentPath={currentPath}
@@ -102,7 +125,7 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
             action={() => {
               toast.info("Essa funcionalidade ainda não está disponível.");
             }}
-          />
+          /> */}
 
           <MenuItem
             text="Sair"
