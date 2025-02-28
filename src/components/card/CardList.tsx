@@ -55,9 +55,6 @@ export default async function CardList({
 
   const subjects = onlyFavoriteds ? userSubjects : await getSubjects(false);
 
-  console.log("Subjects:");
-  console.log(userSubjects);
-
   return (
     <>
       {subjects.map((subject: Subject) => (
