@@ -72,7 +72,7 @@ export default async function CardList({
         ))
       ) : (
         <>
-          <NotFound className="col-span-3">
+          <NotFound className="col-span-4">
             <p>Você ainda não adicionou disciplinas!</p>
             <p>
               Selecione disciplinas na aba{" "}
