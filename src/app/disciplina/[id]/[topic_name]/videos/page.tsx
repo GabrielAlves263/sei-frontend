@@ -27,7 +27,12 @@ async function getVideos(id: string, topic_name: string) {
     );
 
     const topics = await res.json();
-    return topics[0].videos;
+
+    const topic = topics.filter(
+      (topic: any) => topic.name === topic_name.replaceAll("-", " ")
+    );
+
+    return topic[0].videos;
   } catch (err) {
     console.error("Erro ao buscar os vídeos: ", err);
     return [];
