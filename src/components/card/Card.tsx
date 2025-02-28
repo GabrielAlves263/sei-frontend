@@ -1,4 +1,5 @@
 "use client";
+import { fetchClient } from "@/libs/fetchClient";
 import Image from "next/image";
 import Link from "next/link";
 import { MouseEvent, useState } from "react";
@@ -9,21 +10,58 @@ interface ICardProps {
   text: string;
   path: string;
   favorited?: boolean;
+  userId: string;
+  subjectId: number;
+}
+
+async function removeUserSubject(userId: string, subjectId: number) {
+  try {
+    await fetchClient(
+      `http://localhost:8080/api/v1/users/${userId}/subjects/${subjectId}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  } catch (err) {
+    console.error("Erro ao adicionar disciplina: ", err);
+  }
+}
+
+async function addUserSubject(userId: string, subjectId: number) {
+  try {
+    await fetchClient(
+      `http://localhost:8080/api/v1/users/${userId}/subjects/${subjectId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  } catch (err) {
+    console.error("Erro ao adicionar disciplina: ", err);
+  }
 }
 
 export function Card({
   text,
   path,
   favorited: isFavorited = false,
+  userId,
+  subjectId,
 }: ICardProps) {
   const [favorited, setFavorited] = useState(isFavorited);
 
   const defaultColor = "text-white opacity-80";
   const alternatedColor = "text-gold";
 
-  const toggleFavorited = (e: MouseEvent) => {
+  const toggleFavorited = async (e: MouseEvent) => {
     e.stopPropagation();
     setFavorited((curr) => !curr);
+    if (!favorited) {
+      await addUserSubject(userId, subjectId);
+    } else {
+      await removeUserSubject(userId, subjectId);
+    }
   };
 
   return (

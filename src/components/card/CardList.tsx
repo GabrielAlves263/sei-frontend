@@ -64,6 +64,8 @@ export default async function CardList({
           <Card
             key={subject.id}
             text={subject.name}
+            userId={userId}
+            subjectId={subject.id}
             path={`/disciplina/${subject.id}`}
             favorited={favoriteIds.has(subject.id)}
           />

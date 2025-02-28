@@ -8,17 +8,22 @@ export const fetchClient = async (
 ): Promise<Response> => {
   const jwt = getCookie("jwt");
 
-  const response = await fetch(input, {
-    ...init,
-    headers: {
-      ...init?.headers,
-      ...(jwt && { Authorization: `Bearer ${jwt}` }),
-    },
-  });
+  try {
+    const response = await fetch(input, {
+      ...init,
+      headers: {
+        ...init?.headers,
+        ...(jwt ? { Authorization: `Bearer ${jwt}` } : {}),
+      },
+    });
 
-  if (response.status === 401) {
-    await signOut();
+    if (response.status === 401) {
+      await signOut();
+    }
+
+    return response;
+  } catch (error) {
+    console.error("Erro ao fazer a requisição:", error);
+    throw new Error("Erro ao fazer a requisição.");
   }
-
-  return response;
 };
