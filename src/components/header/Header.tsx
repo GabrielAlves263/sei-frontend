@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaMoon, FaUser } from "react-icons/fa6";
 import { MdNotifications, MdSunny } from "react-icons/md";
+import { toast } from "react-toastify";
 import { ButtonRound } from "../button/ButtonRound";
 import Search from "./Search";
 
@@ -23,7 +24,9 @@ export default function Header() {
       <Search />
       <div className="flex space-x-4">
         <ButtonRound
-          action={() => {}}
+          action={() => {
+            toast.info("Essa funcionalidade ainda não está disponível.");
+          }}
           icon={MdNotifications}
           bgColor="bg-paper"
           color="text-text"

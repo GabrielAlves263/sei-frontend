@@ -11,6 +11,7 @@ import { HiMenuAlt2 } from "react-icons/hi";
 import { MdSettings } from "react-icons/md";
 import { RiCompassFill } from "react-icons/ri";
 import { TbHomeFilled } from "react-icons/tb";
+import { toast } from "react-toastify";
 import { MenuItem } from "./MenuItem";
 
 interface ISideMenuProps {
@@ -71,10 +72,13 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
           />
           <MenuItem
             text="Notas"
-            path="/notas"
+            path={`${currentPath}/`}
             currentPath={currentPath}
             icon={BiSolidBook}
             expanded={expanded}
+            action={() => {
+              toast.info("Essa funcionalidade ainda não está disponível.");
+            }}
           />
           <MenuItem
             text="Calendário"
@@ -91,10 +95,13 @@ export function SideMenu({ expanded, toggleExpanded }: ISideMenuProps) {
 
           <MenuItem
             text="Configurações"
-            path="settings"
+            path="`${currentPath}/`"
             currentPath={currentPath}
             icon={MdSettings}
             expanded={expanded}
+            action={() => {
+              toast.info("Essa funcionalidade ainda não está disponível.");
+            }}
           />
 
           <MenuItem
