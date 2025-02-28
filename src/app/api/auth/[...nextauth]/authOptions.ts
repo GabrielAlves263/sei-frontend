@@ -23,13 +23,30 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: {},
-        password: {},
+        username: { label: "Nome", type: "text", required: false },
+        email: { label: "Email", type: "email" },
+        password: { label: "Senha", type: "password" },
       },
       async authorize(credentials, req) {
         if (!credentials) return null;
 
         try {
+          if (credentials.username) {
+            const responseRegister = await fetch(
+              "http://localhost:8080/api/v1/users",
+              {
+                method: "POST",
+                body: JSON.stringify({
+                  name: credentials.username,
+                  email: credentials.email,
+                  password: credentials.password,
+                  course: "COMPUTER_ENGINEERING",
+                }),
+                headers: { "Content-Type": "application/json" },
+              }
+            );
+          }
+
           const response = await fetch("http://localhost:8080/api/v1/login", {
             method: "POST",
             body: JSON.stringify({
