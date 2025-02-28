@@ -2,6 +2,8 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { fetchServer } from "@/libs/fetchServer";
 import { Subject } from "@/types/subject";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
+import NotFound from "../notFound/NotFound";
 import { Card } from "./Card";
 
 interface CardListProps {
@@ -57,14 +59,28 @@ export default async function CardList({
 
   return (
     <>
-      {subjects.map((subject: Subject) => (
-        <Card
-          key={subject.id}
-          text={subject.name}
-          path={`/disciplina/${subject.id}`}
-          favorited={favoriteIds.has(subject.id)}
-        />
-      ))}
+      {subjects.length > 0 ? (
+        subjects.map((subject: Subject) => (
+          <Card
+            key={subject.id}
+            text={subject.name}
+            path={`/disciplina/${subject.id}`}
+            favorited={favoriteIds.has(subject.id)}
+          />
+        ))
+      ) : (
+        <>
+          <NotFound className="col-span-3">
+            <p>Você ainda não adicionou disciplinas!</p>
+            <p>
+              Selecione disciplinas na aba{" "}
+              <Link href={"/explore"}>
+                <strong className="text-orange">Explore</strong>
+              </Link>
+            </p>
+          </NotFound>
+        </>
+      )}
     </>
   );
 }

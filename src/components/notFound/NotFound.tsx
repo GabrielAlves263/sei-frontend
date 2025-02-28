@@ -4,14 +4,16 @@ import { ReactNode } from "react";
 interface NotFoundProps {
   imgSrc?: string;
   children: ReactNode;
+  className?: string;
 }
 
 export default function NotFound({
   children,
   imgSrc = "/notFound.png",
+  className = "",
 }: NotFoundProps) {
   return (
-    <div className="flex flex-col items-center gap-y-9">
+    <div className={`flex flex-col items-center gap-y-9 ${className}`}>
       <Image
         src={imgSrc}
         alt={"Não encontrado"}
